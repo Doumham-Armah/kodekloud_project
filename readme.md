@@ -2,3 +2,4 @@
 
 - this app is written in python
 - it shall be deployed on GKE
+- it shall use cloudbuild
