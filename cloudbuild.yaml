@@ -1,5 +1,16 @@
 steps:
-  - name: "docker"
+  - name: "build docker image"
     args: ["build", "-t", "gcr.io/$PROJECT_ID/gcpdevops", "."]
-images:
-  - "gcr.io/$PROJECT_ID/gcpdevops"
+
+- name: "push image to registry"
+    args: ["push", "-t", "gcr.io/$PROJECT_ID/gcpdevops"]
+
+- name: "deploy image on GKE cluster"
+    args:
+    - run 
+    - --filename=deployment.yaml
+    - --image=gcr.io/$PROJECT_ID/gcpdevops
+    - --location=us-central1-c
+    - --cluster=my-first-cluster-1
+    - --namespace=kodekloud
+
