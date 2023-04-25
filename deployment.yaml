@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gcp-devops-gke
+  name: gcp-devops-gke-dev
   labels:
     app: gcp
 spec:
@@ -15,7 +15,7 @@ spec:
         app: gcp
     spec:
       containers:
-        - name: gcp-devops-gke-dev
+        - name: python-app-dev
           image: gcr.io/kodekloud-project-384420/gcpdevops-dev:latest
           ports:
             - containerPort: 5000
